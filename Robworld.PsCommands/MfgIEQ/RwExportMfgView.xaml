@@ -1,0 +1,66 @@
+﻿<tx:TxWindow 
+    x:Class="Robworld.PsCommands.MfgIEQ.RwExportMfgView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tx="clr-namespace:Tecnomatix.Engineering.Ui.WPF;assembly=Tecnomatix.Engineering.Ui"
+    xmlns:local="clr-namespace:Robworld.PsCommands.MfgIEQ"
+    mc:Ignorable="d"
+    Title="{Binding Title, Mode=OneWay}"
+    Height="450"
+    Width="250"
+    WindowStyle="ToolWindow"
+    Topmost="True"
+    ShowInTaskbar="False">
+
+    <tx:TxWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Robworld.PsCommands;component/Styles/DefaultStyle.xaml" x:Name="Styles"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </tx:TxWindow.Resources>
+    <tx:TxWindow.DataContext>
+        <local:RwExportMfgViewModel x:Name="ExportMfgViewModel" />
+    </tx:TxWindow.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Name="DataItemsGroupBox" Grid.Row="0" Header="{Binding MfgGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <tx:TxObjectGridControl Name="MfgGrid" Grid.Row="0" ItemsSource="{Binding Mfgs}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <tx:TxObjectGridControl.Columns>
+                        <DataGridTextColumn  Header="Mfg name" Width="Auto" Binding="{Binding Name}" />
+                    </tx:TxObjectGridControl.Columns>
+                </tx:TxObjectGridControl>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button Name="AddToGridButton" Margin="0,5,5,0" Width="40" Content="Add" Command="{Binding AddSelectionToCollectionCommand}" />
+                    <Button Name="ClearGridButton" Margin="5,5,5,0" Width="40" Content="Clear" Command="{Binding ClearCollectionCommand}" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="DataTargetGroupBox" Grid.Row="1" Header="Data target" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="DataTargetTextBox" Grid.Column="0" Text="{Binding TargetFilename, Mode=TwoWay}" />
+                <Button Name="DataTargetButton" Grid.Column="1" Content="..." Command="{Binding ChooseTargetFileCommand}" />
+            </Grid>
+        </GroupBox>
+        <Button Name="ExportButton" Grid.Row="2" Margin="5" Content="Export manufacturing features" Command="{Binding ExecuteExportMfgsCommand}" />
+    </Grid>
+</tx:TxWindow>

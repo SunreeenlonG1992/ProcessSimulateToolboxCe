@@ -1,0 +1,76 @@
+﻿<tx:TxWindow 
+    x:Class="Robworld.PsCommands.MfgIEQ.RwImportMfgView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tx="clr-namespace:Tecnomatix.Engineering.Ui.WPF;assembly=Tecnomatix.Engineering.Ui"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:Robworld.PsCommands.MfgIEQ"
+    mc:Ignorable="d"
+    Title="{Binding Title, Mode=OneWay}" 
+    Height="450" 
+    Width="250"
+    WindowStyle="ToolWindow"
+    Topmost="True">
+
+    <tx:TxWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Robworld.PsCommands;component/Styles/DefaultStyle.xaml" x:Name="Styles"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </tx:TxWindow.Resources>
+    <tx:TxWindow.DataContext>
+        <local:RwImportMfgViewModel x:Name="ImportMfgViewModel" />
+    </tx:TxWindow.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Name="DataSourceGroupBox" Grid.Row="0" Header="Data source" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="DataSourceTextBox" Grid.Column="0" Text="{Binding SourceFilename, Mode=TwoWay}" />
+                <Button Name="DataSourceButton" Grid.Column="1" Content="..." Command="{Binding ChooseSourceFileCommand, Mode=OneWay}" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="DataItemsGroupBox" Grid.Row="1" Header="{Binding MfgGroupBoxHeader}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <tx:TxObjectGridControl Name="MfgGrid" ItemsSource="{Binding MfgCollection}" AutoGenerateColumns="False">
+                <tx:TxObjectGridControl.Columns>
+                    <DataGridTextColumn  Header="Mfg name" Width="Auto" Binding="{Binding}" />
+                </tx:TxObjectGridControl.Columns>
+            </tx:TxObjectGridControl>
+        </GroupBox>
+        <GroupBox Name="MfgSourceGroupBox" Grid.Row="2" Header="Manufacturing features source" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="MfgSourceTextBlock" Grid.Column="0" Text="Library node: " />
+                <tx:TxObjEditBoxControl Name="MfgLibraryBox" Grid.Column="1" ListenToPick="True" PickLevel="Component">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Picked">
+                            <i:InvokeCommandAction Command="{Binding MfgLibraryPickedEvent, Mode=OneWay}" CommandParameter="{Binding ElementName=MfgLibraryBox}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </tx:TxObjEditBoxControl>
+            </Grid>
+        </GroupBox>
+        <Button Name="ImportButton" Grid.Row="3" Margin="5" Content="Import manufacturing features" Command="{Binding ExecuteMfgImportCommand, Mode=OneWay}" />
+    </Grid>
+</tx:TxWindow>

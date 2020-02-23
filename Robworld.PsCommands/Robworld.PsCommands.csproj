@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>1.0.16.53</AssemblyVersion>
+    <AssemblyVersion>1.0.27.54</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +51,21 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EMPAPPLICATIONLib">
+      <HintPath>C:\Program Files\Tecnomatix_14.1\eMPower\EMPAPPLICATIONLib.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EMPMODELLib">
+      <HintPath>C:\Program Files\Tecnomatix_14.1\eMPower\EMPMODELLib.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EMPTYPELIBRARYLib">
+      <HintPath>C:\Program Files\Tecnomatix_14.1\eMPower\EMPTYPELIBRARYLib.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="EngineeringInternalExtension">
       <HintPath>C:\Program Files\Tecnomatix_14.1\eMPower\EngineeringInternalExtension.dll</HintPath>
       <Private>False</Private>
@@ -90,10 +105,38 @@
     </Compile>
     <Compile Include="LogicalGroups\RwLogicalGroupCreationModes.cs" />
     <Compile Include="LogicalGroups\RwLogicalGroupViewModel.cs" />
+    <Compile Include="ImportExportQueryMfgCommand.cs" />
+    <Compile Include="MfgIEQ\RwExportMfgViewModel.cs" />
+    <Compile Include="MfgIEQ\RwImportMfgViewModel.cs" />
+    <Compile Include="MfgIEQ\RwExportMfgView.xaml.cs">
+      <DependentUpon>RwExportMfgView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MfgIEQ\RwMfgFeature.cs" />
+    <Compile Include="MfgIEQ\RwImportMfgView.xaml.cs">
+      <DependentUpon>RwImportMfgView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MfgIEQ\RwMfGLibrary.cs" />
+    <Compile Include="MfgIEQ\RwMfgLibraryValidator.cs" />
+    <Compile Include="MfgIEQ\RwQueryMfgView.xaml.cs">
+      <DependentUpon>RwQueryMfgView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MfgIEQ\RwQueryMfgViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="LogicalGroups\RwCreateLogicalGroupsFromCompoundPartsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MfgIEQ\RwExportMfgView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MfgIEQ\RwImportMfgView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MfgIEQ\RwQueryMfgView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -112,6 +155,15 @@
       <Name>Robworld.PsPublicLibrary</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Commands\MfgExport16x16.bmp" />
+    <EmbeddedResource Include="Images\Commands\MfgExport32x32.png" />
+    <EmbeddedResource Include="Images\Commands\MfgImport16x16.bmp" />
+    <EmbeddedResource Include="Images\Commands\MfgImport32x32.png" />
+    <EmbeddedResource Include="Images\Commands\MfgQuery16x16.png" />
+    <EmbeddedResource Include="Images\Commands\MfgQuery32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

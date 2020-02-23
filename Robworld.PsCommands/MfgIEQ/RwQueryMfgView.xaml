@@ -1,0 +1,83 @@
+﻿<tx:TxWindow x:Class="Robworld.PsCommands.MfgIEQ.RwQueryMfgView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tx="clr-namespace:Tecnomatix.Engineering.Ui.WPF;assembly=Tecnomatix.Engineering.Ui"
+        xmlns:local="clr-namespace:Robworld.PsCommands.MfgIEQ"
+        mc:Ignorable="d"
+        Title="{Binding Title, Mode=OneWay}"
+        Height="450"
+        MaxHeight="900"
+        Width="350"
+        WindowStyle="ToolWindow"
+        Topmost="True"
+        ShowInTaskbar="False">
+
+    <tx:TxWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Robworld.PsCommands;component/Styles/DefaultStyle.xaml" x:Name="Styles"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </tx:TxWindow.Resources>
+    <tx:TxWindow.DataContext>
+        <local:RwQueryMfgViewModel x:Name="QueryMfgViewModel" />
+    </tx:TxWindow.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Name="ReferenceMfgLibrariesGroupBox" Grid.Row="0" Header="{Binding ReferenceMfgLibrariesGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <tx:TxObjectGridControl Name="ReferenceMfgLibrariesGrid" Grid.Row="0" ItemsSource="{Binding ReferenceMfgLibraries}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <tx:TxObjectGridControl.Columns>
+                        <DataGridTextColumn  Header="Mfg library name" Width="Auto" Binding="{Binding Name}" />
+                        <DataGridTextColumn  Header="Mfg library externalId" Width="Auto" Binding="{Binding ExternalID}" />
+                    </tx:TxObjectGridControl.Columns>
+                </tx:TxObjectGridControl>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button Name="AddToGridButton" Margin="0,5,5,0" Width="40" Content="Add" Command="{Binding AddReferenceMfgLibrariesCommand}" />
+                    <Button Name="ClearGridButton" Margin="5,5,5,0" Width="40" Content="Clear" Command="{Binding ClearReferenceMfgLibrariesCommand}" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Name="StudyMfgFeaturesGroupBox" Grid.Row="1" Header="{Binding StudyMfgFeaturesGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <tx:TxObjectGridControl Name="StudyMfgFeaturesGrid" Grid.Row="0" ItemsSource="{Binding StudyMfgFeatures}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <tx:TxObjectGridControl.Columns>
+                        <DataGridTextColumn  Header="Mfg feature name" Width="Auto" Binding="{Binding Name}" />
+                        <DataGridTextColumn  Header="Mfg library externalId" Width="Auto" Binding="{Binding MfgLibrariesAsString}" />
+                    </tx:TxObjectGridControl.Columns>
+                </tx:TxObjectGridControl>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Name="ExportGroupBox" Grid.Row="2" Header="{Binding ExportGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <RadioButton Name="ExportAllMfGsRadioButton" Grid.Row="0" Grid.Column="0" GroupName="ExportRule" Content="All MfGs" Command="{Binding ExportRuleCommand}" CommandParameter="A" IsChecked="True" />
+                <RadioButton Name="ExportSuspiciousMfgRadioButton" Grid.Row="0" Grid.Column="1" GroupName="ExportRule" Content="Only suspicious MfGs" Command="{Binding ExportRuleCommand}" CommandParameter="S" />
+                <Button Name="ExportToFileButton" Grid.Row="1" Margin="0,5,5,0" Width="40" HorizontalAlignment="Left" Content="Export" Command="{Binding ExportStudyMfgFeaturesCommand}" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</tx:TxWindow>
