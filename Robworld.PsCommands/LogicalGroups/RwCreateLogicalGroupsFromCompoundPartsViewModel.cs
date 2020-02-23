@@ -136,7 +136,7 @@ namespace Robworld.PsCommands.LogicalGroups
             GroupingRuleCommand = new RwActionCommand(SetGroupingRuleExecuted, SetGroupingRuleCanExecute);
             ExecuteLogicalGroupsCreationCommand = new RwActionCommand(LogicalGroupsCreationExecuted, LogicalGroupsCreationCanExecute);
             CompoundPartPickedEvent = new RwActionCommand(CompoundPartPickedExecuted, CompoundPartPickedCanExecute);
-            LogicalGroupsData.CollectionChanged += LogicalGroupsDataCollectionChanged;
+            LogicalGroupsData.CollectionChanged += OnLogicalGroupsDataCollectionChanged;
         }
         #endregion
 
@@ -357,7 +357,7 @@ namespace Robworld.PsCommands.LogicalGroups
         /// </summary>
         /// <param name="sender">The logical groups collection</param>
         /// <param name="e">The collection changed event arguments</param>
-        private void LogicalGroupsDataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void OnLogicalGroupsDataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (LogicalGroupsData != null)
             {

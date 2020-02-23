@@ -1,5 +1,5 @@
-﻿using Tecnomatix.Engineering;
-using Robworld.PsPublicLibrary.Mvvm;
+﻿using Robworld.PsPublicLibrary.Mvvm;
+using Tecnomatix.Engineering;
 
 namespace Robworld.PsCommands.LogicalGroups
 {
@@ -37,15 +37,17 @@ namespace Robworld.PsCommands.LogicalGroups
         /// <summary>
         /// Get or set the items that belongs to the logical group
         /// </summary>
-        public TxObjectList Items { get; set; } 
+        public TxObjectList Items { get; set; }
         #endregion
 
+        #region Constructors
         /// <summary>
-        /// Create a new instance of the logical group cration data
+        /// Create a new instance of the logical group view model
         /// </summary>
         public RwLogicalGroupViewModel()
         {
             Items = new TxObjectList();
-        }
+        } 
+        #endregion
     }
 }
