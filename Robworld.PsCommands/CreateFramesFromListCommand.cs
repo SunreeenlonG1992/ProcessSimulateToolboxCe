@@ -50,7 +50,7 @@ namespace Robworld.PsCommands
         /// </summary>
         public override string Bitmap
         {
-            get { return "Images.Commands.CreateFramesFromList16x16"; }
+            get { return "Images.Commands.CreateFramesFromList16x16.bmp"; }
         }
 
         /// <summary>
