@@ -35,12 +35,12 @@ namespace Robworld.PsCommands.LogicalGroups
         /// <summary>
         /// Get the height of the window
         /// </summary>
-        public int WindowHeight { get { return 250; } }
+        public int WindowHeight { get { return 350; } }
 
         /// <summary>
         /// Get the width of the window
         /// </summary>
-        public int WindowWidth { get { return 250; } }
+        public int WindowWidth { get { return 260; } }
 
         /// <summary>
         /// Get the caption of the logical groups data groupbox

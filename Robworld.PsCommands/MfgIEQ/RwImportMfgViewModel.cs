@@ -1,10 +1,8 @@
 ﻿using EngineeringInternalExtension;
 using Robworld.PsPublicLibrary.Mvvm;
 using Robworld.PsPublicLibrary.Utilities;
-using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Tecnomatix.Engineering;
 using Tecnomatix.Engineering.Ui.WPF;
