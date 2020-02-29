@@ -8,11 +8,14 @@
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:local="clr-namespace:Robworld.PsCommands.MfgIEQ"
     mc:Ignorable="d"
+    d:DesignHeight="450" d:DesignWidth="250"
     Title="{Binding Title, Mode=OneWay}" 
-    Height="450" 
-    Width="250"
-    WindowStyle="ToolWindow"
-    Topmost="True">
+    Height="{Binding WindowHeight}" 
+    Width="{Binding WindowWidth}"
+    Topmost="True"
+    SemiModal="True"
+    ShowInTaskbar="False"
+    WindowStyle="ToolWindow">
 
     <tx:TxWindow.Resources>
         <ResourceDictionary>

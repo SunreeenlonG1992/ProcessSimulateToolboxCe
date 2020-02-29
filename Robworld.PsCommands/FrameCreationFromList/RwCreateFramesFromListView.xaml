@@ -9,10 +9,12 @@
     xmlns:local="clr-namespace:Robworld.PsCommands.FrameCreationFromList"
     mc:Ignorable="d"
     Title="{Binding Title}" 
-    Height="450" 
-    Width="250"
-    WindowStyle="ToolWindow"
-    Topmost="True" SemiModal="True">
+    Height="{Binding WindowHeight}" 
+    Width="{Binding WindowWidth}"
+    Topmost="True"
+    SemiModal="True"
+    ShowInTaskbar="False"
+    WindowStyle="ToolWindow">
 
     <tx:TxWindow.Resources>
         <ResourceDictionary>

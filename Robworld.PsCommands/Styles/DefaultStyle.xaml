@@ -59,7 +59,8 @@
     </Style>
 
     <Style x:Key="BaseTxObjectEditBoxStyle" TargetType="{x:Type tx:TxObjEditBoxControl}" BasedOn="{StaticResource BaseStyle}">
-        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     </Style>
 
     <Style x:Key="BaseDataGridStyle" TargetType="{x:Type DataGrid}">

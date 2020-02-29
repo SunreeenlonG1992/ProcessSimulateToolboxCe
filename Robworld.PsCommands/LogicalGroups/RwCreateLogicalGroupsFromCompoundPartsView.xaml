@@ -9,11 +9,12 @@
     xmlns:local="clr-namespace:Robworld.PsCommands.LogicalGroups"
     mc:Ignorable="d"
     Title="{Binding Title}" 
-    Height="350" 
-    Width="260"
-    WindowStyle="ToolWindow"
+    Height="{Binding WindowHeight}"
+    Width="{Binding WindowWidth}"
     Topmost="True"
-    SemiModal="True">
+    SemiModal="True"
+    ShowInTaskbar="False"
+    WindowStyle="ToolWindow">
 
     <tx:TxWindow.Resources>
         <ResourceDictionary>
