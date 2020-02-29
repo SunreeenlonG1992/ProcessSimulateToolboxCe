@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>1.0.27.54</AssemblyVersion>
+    <AssemblyVersion>1.0.32.60</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -98,7 +98,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateFramesFromListCommand.cs" />
     <Compile Include="CreateLogicalGroupsFromPartsCommand.cs" />
+    <Compile Include="FrameCreationFromList\RwCreateFramesFromListView.xaml.cs">
+      <DependentUpon>RwCreateFramesFromListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrameCreationFromList\RwCreateFramesFromListViewModel.cs" />
+    <Compile Include="FrameCreationFromList\RwFrameCreationViewModel.cs" />
     <Compile Include="LogicalGroups\RwCreateLogicalGroupsFromCompoundPartsViewModel.cs" />
     <Compile Include="LogicalGroups\RwCreateLogicalGroupsFromCompoundPartsView.xaml.cs">
       <DependentUpon>RwCreateLogicalGroupsFromCompoundPartsView.xaml</DependentUpon>
@@ -124,6 +130,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="FrameCreationFromList\RwCreateFramesFromListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LogicalGroups\RwCreateLogicalGroupsFromCompoundPartsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,7 +166,10 @@
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Commands\CreateFramesFromList16x16.bmp" />
+    <EmbeddedResource Include="Images\Commands\CreateFramesFromList32x32.png" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Commands\MfgExport16x16.bmp" />
     <EmbeddedResource Include="Images\Commands\MfgExport32x32.png" />

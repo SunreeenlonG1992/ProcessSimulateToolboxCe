@@ -1,0 +1,100 @@
+﻿<tx:TxWindow 
+    x:Class="Robworld.PsCommands.FrameCreationFromList.RwCreateFramesFromListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tx="clr-namespace:Tecnomatix.Engineering.Ui.WPF;assembly=Tecnomatix.Engineering.Ui"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:Robworld.PsCommands.FrameCreationFromList"
+    mc:Ignorable="d"
+    Title="{Binding Title}" 
+    Height="450" 
+    Width="250"
+    WindowStyle="ToolWindow"
+    Topmost="True" SemiModal="True">
+
+    <tx:TxWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Robworld.PsCommands;component/Styles/DefaultStyle.xaml" x:Name="Styles"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </tx:TxWindow.Resources>
+    <Window.DataContext>
+        <local:RwCreateFramesFromListViewModel x:Name="createFramesFromListViewModel" />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Name="DataManipulationGroupBox" Grid.Row="0" Header="Data options" Margin="5" Padding="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="25*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="FramePrefixTextBlock" Grid.Column="0" Text="Prefix: " />
+                <TextBox Name="FramePrefixTextBox" Grid.Column="1" Text="{Binding FramePrefix, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0" />
+                <TextBlock Name="FrameSuffixTextBlock" Grid.Column="2" Text="Suffix: " Margin="5,0,0,0" />
+                <TextBox Name="FrameSuffixTextBox" Grid.Column="3" Text="{Binding FrameSuffix, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="DataSourceGroupBox" Grid.Row="1" Header="Data source" Margin="5" Padding="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="25" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="DataSourceTextBox" Grid.Column="0" Text="{Binding SourceFilename, Mode=TwoWay}" />
+                <Button Name="DataSourceButton" Grid.Column="1" Content="..." Command="{Binding ChooseSourceFileCommand, Mode=OneWay}" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="DataItemsGroupBox" Grid.Row="2" Header="{Binding FrameGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5">
+            <tx:TxObjectGridControl Name="FrameListGrid" ItemsSource="{Binding FramesData, Mode=TwoWay}" AutoGenerateColumns="False">
+                <tx:TxObjectGridControl.Columns>
+                    <DataGridTextColumn Header="Frame name" Width="Auto" Binding="{Binding Name, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="X" Width="Auto" Binding="{Binding X, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Y" Width="Auto" Binding="{Binding Y, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Z" Width="Auto" Binding="{Binding Z, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Rx" Width="Auto" Binding="{Binding Rx, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Ry" Width="Auto" Binding="{Binding Ry, Mode=TwoWay}" />
+                    <DataGridTextColumn Header="Rz" Width="Auto" Binding="{Binding Rz, Mode=TwoWay}" />
+                </tx:TxObjectGridControl.Columns>
+            </tx:TxObjectGridControl>
+        </GroupBox>
+        <GroupBox Name="ReferenceFrameGroupBox" Grid.Row="3" Header="Reference frame" Margin="5" Padding="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="ReferenceFrameTextBlock" Grid.Column="0" Text="Frame: " />
+                <tx:TxObjEditBoxControl Name="ReferenceFrameBox" Grid.Column="1" ListenToPick="True" PickLevel="Component">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Picked">
+                            <i:InvokeCommandAction Command="{Binding ReferenceFramePickedEvent, Mode=OneWay}" CommandParameter="{Binding ElementName=ReferenceFrameBox}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </tx:TxObjEditBoxControl>
+            </Grid>
+        </GroupBox>
+        <Button Name="ExecuteButton" Grid.Row="4" Margin="5" Content="Create frames" Command="{Binding ExecuteFrameCreationCommand, Mode=OneWay}" />
+    </Grid>
+</tx:TxWindow>
