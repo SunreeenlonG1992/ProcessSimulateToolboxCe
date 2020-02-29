@@ -2,32 +2,40 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:tx="clr-namespace:Tecnomatix.Engineering.Ui.WPF;assembly=Tecnomatix.Engineering.Ui">
 
+    <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+        <Setter Property="FontWeight" Value="Normal" />
+    </Style>
+
+    <Style TargetType="{x:Type Control}" x:Key="BaseHighlightingStyle">
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
     <Style x:Key="TxWpfWindowStyle" TargetType="{x:Type tx:TxWindow}">
         <Setter Property="Background" Value="RoyalBlue" />
         <Setter Property="FontFamily" Value="Consolas" />
         <Setter Property="FontSize" Value="10" />
     </Style>
 
-    <Style x:Key="GroupboxStyle" TargetType="{x:Type GroupBox}">
+    <Style x:Key="BaseGroupboxStyle" TargetType="{x:Type GroupBox}">
         <Setter Property="BorderBrush" Value="RoyalBlue" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="Black" />
     </Style>
 
-    <Style x:Key="RadioButtonStyle" TargetType="{x:Type RadioButton}">
+    <Style x:Key="BaseTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="BaseTextBoxStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="BaseRadioButtonStyle" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-    <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
-        <Setter Property="VerticalAlignment"  Value="Center" />
-    </Style>
-
-    <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
-        <Setter Property="VerticalContentAlignment"  Value="Center" />
-    </Style>
-
-    <Style x:Key="DatagridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+    <Style x:Key="BaseDataGridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Background" Value="LightBlue" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -37,19 +45,34 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="5,0" />
     </Style>
-    
-    <Style x:Key="DatagridCellStyle" TargetType="{x:Type DataGridCell}">
+
+    <Style x:Key="BaseDataGridCellStyle" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource BaseStyle}">
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
     </Style>
     
-    <Style x:Key="TxObjectGridStyle" TargetType="{x:Type tx:TxObjectGridControl}">
-        <Setter Property="ColumnHeaderStyle"  Value="{StaticResource DatagridColumnHeaderStyle}"/>
-        <Setter Property="CellStyle" Value="{StaticResource DatagridCellStyle}"/>
+    <Style x:Key="BaseTxObjectGridStyle" TargetType="{x:Type tx:TxObjectGridControl}">
+        <Setter Property="ColumnHeaderStyle"  Value="{StaticResource BaseDataGridColumnHeaderStyle}"/>
+        <Setter Property="CellStyle" Value="{StaticResource BaseDataGridCellStyle}"/>
     </Style>
 
-    <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}">
-        <Setter Property="ColumnHeaderStyle"  Value="{StaticResource DatagridColumnHeaderStyle}"/>
-        <Setter Property="CellStyle" Value="{StaticResource DatagridCellStyle}"/>
+    <Style x:Key="BaseTxObjectEditBoxStyle" TargetType="{x:Type tx:TxObjEditBoxControl}" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
     </Style>
+
+    <Style x:Key="BaseDataGridStyle" TargetType="{x:Type DataGrid}">
+        <Setter Property="ColumnHeaderStyle"  Value="{StaticResource BaseDataGridColumnHeaderStyle}"/>
+        <Setter Property="CellStyle" Value="{StaticResource BaseDataGridCellStyle}"/>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}" />
+    <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource BaseDataGridStyle}" />
+    <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource BaseGroupboxStyle}" />
+    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource BaseRadioButtonStyle}" />
+    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}" />
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseTextBoxStyle}" />
+    <Style TargetType="{x:Type tx:TxObjectGridControl}" BasedOn="{StaticResource BaseTxObjectGridStyle}" />
+    <Style TargetType="{x:Type tx:TxObjEditBoxControl}" BasedOn="{StaticResource BaseTxObjectEditBoxStyle}" />
 </ResourceDictionary>

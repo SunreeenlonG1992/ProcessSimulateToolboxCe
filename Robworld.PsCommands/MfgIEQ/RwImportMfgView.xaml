@@ -32,7 +32,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <GroupBox Name="DataSourceGroupBox" Grid.Row="0" Header="Data source" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="DataSourceGroupBox" Grid.Row="0" Header="Data source" Margin="5" Padding="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -45,14 +45,14 @@
                 <Button Name="DataSourceButton" Grid.Column="1" Content="..." Command="{Binding ChooseSourceFileCommand, Mode=OneWay}" />
             </Grid>
         </GroupBox>
-        <GroupBox Name="DataItemsGroupBox" Grid.Row="1" Header="{Binding MfgGroupBoxHeader}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="DataItemsGroupBox" Grid.Row="1" Header="{Binding MfgGroupBoxHeader}" Margin="5" Padding="5">
             <tx:TxObjectGridControl Name="MfgGrid" ItemsSource="{Binding MfgCollection}" AutoGenerateColumns="False">
                 <tx:TxObjectGridControl.Columns>
                     <DataGridTextColumn  Header="Mfg name" Width="Auto" Binding="{Binding}" />
                 </tx:TxObjectGridControl.Columns>
             </tx:TxObjectGridControl>
         </GroupBox>
-        <GroupBox Name="MfgSourceGroupBox" Grid.Row="2" Header="Manufacturing features source" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="MfgSourceGroupBox" Grid.Row="2" Header="Manufacturing features source" Margin="5" Padding="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />

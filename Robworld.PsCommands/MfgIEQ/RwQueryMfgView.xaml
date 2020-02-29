@@ -31,7 +31,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <GroupBox Name="ReferenceMfgLibrariesGroupBox" Grid.Row="0" Header="{Binding ReferenceMfgLibrariesGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="ReferenceMfgLibrariesGroupBox" Grid.Row="0" Header="{Binding ReferenceMfgLibrariesGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -50,7 +50,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Name="StudyMfgFeaturesGroupBox" Grid.Row="1" Header="{Binding StudyMfgFeaturesGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="StudyMfgFeaturesGroupBox" Grid.Row="1" Header="{Binding StudyMfgFeaturesGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -64,7 +64,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Name="ExportGroupBox" Grid.Row="2" Header="{Binding ExportGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="ExportGroupBox" Grid.Row="2" Header="{Binding ExportGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />

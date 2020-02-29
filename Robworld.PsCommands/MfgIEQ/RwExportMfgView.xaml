@@ -31,7 +31,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <GroupBox Name="DataItemsGroupBox" Grid.Row="0" Header="{Binding MfgGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="DataItemsGroupBox" Grid.Row="0" Header="{Binding MfgGroupBoxHeader, Mode=OneWay}" Margin="5" Padding="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -48,7 +48,7 @@
                 </StackPanel>
             </Grid>
         </GroupBox>
-        <GroupBox Name="DataTargetGroupBox" Grid.Row="1" Header="Data target" Margin="5" Padding="5" Style="{StaticResource GroupboxStyle}">
+        <GroupBox Name="DataTargetGroupBox" Grid.Row="1" Header="Data target" Margin="5" Padding="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
