@@ -36,7 +36,7 @@ namespace Robworld.PsCommands.FrameCreationFromList
         /// <summary>
         /// Get the width of the window
         /// </summary>
-        public int WindowWidth { get { return 250; } }
+        public int WindowWidth { get { return 260; } }
 
         /// <summary>
         /// Get the caption of the frame data groupbox
@@ -202,9 +202,9 @@ namespace Robworld.PsCommands.FrameCreationFromList
         /// <param name="obj">The TxObjEditBoxControl of the view</param>
         private void ReferenceFramePickedExecuted(object obj)
         {
-            if(obj is Tecnomatix.Engineering.Ui.WPF.TxObjEditBoxControl)
+            if ((obj as Tecnomatix.Engineering.Ui.WPF.TxObjEditBoxControl).Object is ITxLocatableObject locatableObject)
             {
-                ReferenceFrame = ((obj as Tecnomatix.Engineering.Ui.WPF.TxObjEditBoxControl).Object as ITxLocatableObject).AbsoluteLocation;
+                ReferenceFrame = locatableObject.AbsoluteLocation;
             }
         }
 
