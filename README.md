@@ -1,5 +1,5 @@
 # ProcessSimulateToolboxCe
-Commands for the PLM Software Process Simulate from Tecnomatix
+Commands and viewers for the PLM Software Process Simulate from Tecnomatix
 
 ### List of commands
 
@@ -9,3 +9,4 @@ Commands for the PLM Software Process Simulate from Tecnomatix
     * Mfg export: Mfg data can be exported to a file. 
     * Mfg import: Mfg data can be imported from a file.
 	* Mfg query: Checks all Mfg in a study if they are referenced from correct libraries.
+- **OpenMDD**: This command opens the machine data directory of a robot.
