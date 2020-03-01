@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>1.0.39.60</AssemblyVersion>
+    <AssemblyVersion>1.0.40.61</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -127,6 +127,8 @@
       <DependentUpon>RwQueryMfgView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MfgIEQ\RwQueryMfgViewModel.cs" />
+    <Compile Include="OpenMDDCommand.cs" />
+    <Compile Include="OpenMDD\RwOpenMDD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +179,11 @@
     <EmbeddedResource Include="Images\Commands\MfgImport32x32.png" />
     <EmbeddedResource Include="Images\Commands\MfgQuery16x16.png" />
     <EmbeddedResource Include="Images\Commands\MfgQuery32x32.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Commands\OpenMDD16x16.bmp" />
+    <EmbeddedResource Include="Images\Commands\OpenMDD32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
